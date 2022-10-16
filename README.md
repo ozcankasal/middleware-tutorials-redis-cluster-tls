@@ -1,6 +1,6 @@
 # Setting up a Redis Cluster with TLS
 
-Create a redis cluster using TLS for client and inter-node communications.
+Create a redis cluster using TLS for client and inter-nodes communications.
 
 ![cluster topology](files/redis-cluster-topology.png)
 
