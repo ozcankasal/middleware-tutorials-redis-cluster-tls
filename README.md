@@ -11,7 +11,7 @@ openssl genrsa 4096 > ca.key
 ```
 
 ```bash
-openssl req -new -x509 -nodes -sha256 -key ca.key -days 3650 -subj "/C=TR/CN=ornek" -out ca.crt
+openssl req -new -x509 -nodes -sha256 -key ca.key -days 3650 -subj "/C=TR/CN=example" -out ca.crt
 ``` 
 
 # Usage
