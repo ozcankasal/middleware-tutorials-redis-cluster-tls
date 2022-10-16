@@ -64,7 +64,7 @@ services:
       - redis-4
       - redis-5
       - redis-6
-    image: redis:1.0
+    image: redis-cluster:1.0
     hostname: redis.builder
     container_name: redis.builder
     entrypoint: /app/create_cluster.sh
