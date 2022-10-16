@@ -1,0 +1,80 @@
+version: "3"
+
+services:
+  redis-1:
+    build: .
+    image: redis-cluster:1.0
+    hostname: redis.node.one
+    container_name: redis.node.one
+    entrypoint: /app/run.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.11
+  redis-2:
+    build: .
+    image: redis-cluster:1.0
+    hostname: redis.node.two
+    container_name: redis.node.two
+    entrypoint: /app/run.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.12
+  redis-3:
+    build: .
+    image: redis-cluster:1.0
+    hostname: redis.node.three
+    container_name: redis.node.three
+    entrypoint: /app/run.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.13
+  redis-4:
+    build: .
+    image: redis-cluster:1.0
+    hostname: redis.node.four
+    container_name: redis.node.four
+    entrypoint: /app/run.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.14
+  redis-5:
+    build: .
+    image: redis-cluster:1.0
+    hostname: redis.node.five
+    container_name: redis.node.five
+    entrypoint: /app/run.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.15
+  redis-6:
+    build: .
+    image: redis-cluster:1.0
+    hostname: redis.node.six
+    container_name: redis.node.six
+    entrypoint: /app/run.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.16
+  redis-builder:
+    build: .
+    depends_on:
+      - redis-1
+      - redis-2
+      - redis-3
+      - redis-4
+      - redis-5
+      - redis-6
+    image: redis:1.0
+    hostname: redis.builder
+    container_name: redis.builder
+    entrypoint: /app/create_cluster.sh
+    networks:
+      app_net:
+        ipv4_address: 172.23.0.17
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.0.0/16
